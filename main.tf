@@ -18,6 +18,10 @@ resource "github_repository_deploy_key" "this" {
 resource "minikube_cluster" "docker" {
   driver       = "docker"
   cluster_name = var.cluster_name
+  addons = [
+    "default-storageclass",
+    "storage-provisioner"
+  ]
 }
 
 resource "flux_bootstrap_git" "this" {
