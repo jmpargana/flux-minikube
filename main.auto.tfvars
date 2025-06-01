@@ -1,4 +1,5 @@
 github_user="jmpargana"
-github_repo="https://github.com/jmpargana/flux-test.git"
+github_repo="flux-test"
+github_repo_url="ssh://git@github.com/jmpargana/flux-test.git"
 flux_cluster_path = "clusters/test"
 cluster_name = "terraform-provider-minikube-acc-docker"

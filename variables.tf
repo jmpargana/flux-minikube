@@ -17,6 +17,12 @@ variable "github_repo" {
   default     = ""
 }
 
+variable "github_repo_url" {
+  description = "GitHub repository ssh url"
+  type        = string
+  default     = ""
+}
+
 variable "flux_cluster_path" {
   description = "Cluster path name in flux repository"
   type        = string

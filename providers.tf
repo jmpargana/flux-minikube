@@ -1,5 +1,7 @@
 
 terraform {
+  required_version = ">= 1.7.0"
+
   required_providers {
     flux = {
       source  = "fluxcd/flux"
@@ -8,6 +10,10 @@ terraform {
     minikube = {
       source  = "scott-the-programmer/minikube"
       version = "0.5.2"
+    }
+    github = {
+      source  = "integrations/github"
+      version = ">= 6.1"
     }
   }
 }
@@ -27,10 +33,15 @@ provider "flux" {
   }
 
   git = {
-    url = var.github_repo
-    http = {
-      username = var.github_user
-      password = var.github_token
+    url = var.github_repo_url
+    ssh = {
+        username = "git"
+        private_key = tls_private_key.flux.private_key_pem
     }
   }
+}
+
+provider "github" {
+  owner = var.github_user
+  token = var.github_token
 }
